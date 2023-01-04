@@ -1,20 +1,27 @@
 <?php
 
-echo needle(["red","blue","yellow","black","grey"],"blue");
+print_r(blueOcean([1,2,3,4,6,10], [1]));
 
-function needle($arr,$needle){
-    $arrLength = count($arr);
-    $a = "";
+//manual function
+function blueOcean($arr,$remover){
+    $arrLength  = count($arr);
+    $arrLength2 = count($remover);
+    $a=array();
+
     for($i = 0; $i < $arrLength; $i++) {
-        if($arr[$i]==$needle){
-            $a = $i;
+        for($j = 0; $j < $arrLength2; $j++) {
+            if ($arr[$i] != $remover[$j]){
+                array_push($a,$arr[$i]);
+            }
         }
     }
-    if($a != ""){
-        return $a;
-    }else{
-        return "not found";
-    }
+
+    return $a;
+}
+
+//simplest function
+function blueOcean2($arr,$remover){
+    return array_diff($arr, $remover);
 }
 
 ?>
